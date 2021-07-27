@@ -2476,6 +2476,28 @@ score DYN_OKYOUMI 3.5
 
 
 # 
+# added 2021.07.27 by [yoh]
+# 
+rawbody TOOMANYSPLF /(?:(?:\x20|\x09){20,}\x0a){15}/
+score TOOMANYSPLF 5
+
+meta DYN_TMSPLF ___DYNAMICIP && TOOMANYSPLF
+score DYN_TMSPLF 5
+
+header SUSPMTLD From =~ /.+\@[0-9a-z]{3,}\.xyz/
+describe SUSPMTLD suspicious Mail Address TLD
+score SUSPMTLD 1.0
+
+meta DYN_SUSPMTLD ___DYNAMICIP && SUSPMTLD
+score DYN_SUSPMTLD 5
+
+meta DYN_PDSOBTLD ___DYNAMICIP && PDS_OTHER_BAD_TLD
+score DYN_PDSOBTLD 5
+
+
+
+
+# 
 # I wrote this rule at 2005.10.19 10:30.
 # When the faked Received: will be disappeared?
 # 2005.10.19 by [yoh]
@@ -2570,7 +2592,7 @@ score JPPORNSCAMFROM 7.0
 # combzmail\.jp|
 # |[a-z0-9]+
 
-rawbody JPSCAMURI /https{0,1}:\/\/[a-z0-9-.]*(?:europe\.webmatrixhosting\.net|gogoway\.orgdns\.org|spread\.or\.tv|maga\.readymade\.jp|value\.webcordial\.com|pika\.tv|19191969\.com|093ana\.com|cam-cam\.net|candypop\.tv|deaiking\.com|milkymail\.net|purelove888\.com|secretoflove\.net|l1l9\.com|otegaruhp\.com\/cobra\/html\/hirokopr|online-jp\.net|outside-lover\.com|blue-ocean2004\.com|naturalget\.com|scoop-on\.(com|jp)|1092\.cn|1092\.gs|19190930\.com|i1i9\.net|l1l9\.com|yoso-zu\.com|rose-kiss\.com|members\.fortunecity\.com|up7\.cc|eyc\.jp|zl8\.jp|61\.96\.62\.167|pure1151\.com|bblive\.tv|ai-angel\.net|soku-aeru\.net|nightpita\.com|dejavu\.to|tada\.ph|peachat\.net|1919japan\.com|to-roku\.com|ceaw\.jp|59862777\.com|orange-rocket\.com|prin\.to|lolo\.ojiji\.net|ana093\.cc|eroero999\.com|love4deai\.com|kicks-ass\.net|is-a-geek\.org|lovemint\.net|e-hot-news\.jp|getget\.oops\.jp|upper\.jp|xx-mail\.jp|px\.a8\.net|pc\.lovefree\.tv|pure1107\.net|ljart\.net|(0-9a-z)+\.ifdef\.jp|(free24mail|365hdate)\.fc2\.com|odaiba-bbs\.jp|ai51\.e-city\.tv|bokumetu\.com|kissmi\.jp|party-jamjam\.org|hosting-geomax\.jp|sf-spot\.com|big-888\.com|o-oku-channel\.com|soresoreweb\.com|geocities\.jp\/(sayacchimail|poophy15)|websamba\.com|members\.lycos\.co\.uk\/cadlove|[a-z0-9-]+\.(tripod\.com|host\.sk)(\/top|\/main){0,1}|xid-love\.netfirms\.com|club-classico\.com|e-ezweb\.jp|rakuen-dx\.com|lover-kiss\.com|cross\.ne\.jp|j-sine\.com|swht\.jp|doxlive\.com|perfectharmony-ms\.org|1251\.us|servecounterstrike\.com|[a-z_-]*deai[a-z_-]*\.[a-z0-9-]+\.(jp|com|net|tv|sk|cn)|61\.197\.117\.99|redmax\.jp|morachao\.com|1251\.cc|formzu\.net|members\.ocry\.com|cbat\.page\.ne\.jp|889860\.com|89balls\.com|filltheblank\.com|members2\.jcom\.home\.ne\.jp\/3385927201|aru-aru\.jpn\.org|otz5678\.hn\.org|tinyurl\.com|choco2\.jp|buisinespp\.dyndns\.dk|abcwill\.dyn\.dhs\.org|yudoweb1\.freewebsitehosting\.com|umimono.no.sapo.pt|656566\.com|sss-japan\.co\.jp|home\.doramail\.com|www40\.brinkster\.com|shameme\.host\.sk|autocall\.jp|dm-mail\.net|www18\.ocn\.ne\.jp\/\~kio-pack|mo-v\.jp|www\.tactnet\.co\.jp|hiromirror-desighner\.net|fff\.lir\.dk|s-s\.kyed\.com|brandwholesaler\.com|nihon-cash\.com|dogyman\.com|yellowsanta\.jp|bottom-up1\.com|hime\.ontheweb\.nu|free-xx\.com|address-bank\.homeip\.net|agk-777\.jp|shotgunmarriage\.net|(minami|farewell|alstroemeria)\.dynu\.ca|kyousai\.squares\.net|gigamerimp\.net|boorats19\.info|sunnyday\.jp|life-line\.mods\.jp|lucavenus\.jp|e-shops\.jp|fox99\.staticcling\.org|e-net\.velvet\.jp|access\.main\.jp|webclick\.chu\.jp|www\.infotop\.jp|www\.mailbank\.biz|ladymaid\.net|new-homebiz\.com|777navi\.cc|riajet\.com|af-sv\.com|yy-life\.com|1151bbs\.jp|gambletips\.net|oogachi-t\.com|keiba-de-myhome-get\.seesaa\.net|pachipuro-m\.com|sugowaza\.jp|free-book\.jp|ippatu\.com|.\$B%a%k%:.\(B\.jp|data-jobbank\.from\.tv|deairooms\.com|1-coin\.jp|combzmail\.jp|insiderscoachingclub\.com|genkiclub\.net|viviani\.jp|sakakibara\.zz\.tc|miss-me\.findyou2\.net|at-soho\.rdy\.jp|pavbq\.com|kagurazaka\.biz|sc37\.vczln\.com|snsns\.my-sv\.net|e-bukken\.co\.jp|ji06\.gtwd\.biz|ktaisearch\.com|shop\.shenlihang\.info|baojpp\.com|sakuradvd\.com|oshirase-jp\.com|genkiclub1470\.com|shoppingjp\.net|rdnw\.net|i-ktai\.com|rkg\.(?:jp|cc)|megami\.hiho\.jp|infodirect\.bz|aboy\.jp|sakuses2012\.web\.fc2\.com|123direct\.info|freesianet\.co\.jp|sisoras\.info|fx-worldalliance\.com|w-net\.cc|yutori-bank\.com|jpn\.org|f\.msgs\.jp|serendipshop\.com|shop-pro\.jp|oison\.xsrv\.jp|crecomcre\.com|1lejend\.com|paz\.jp|kei\.net|reizeike\.com|megami\.hiho\.jp|auc-life\.org|icon-corp\.sub\.jp|helphealjapan\.com|sanwango\.com|serendip-corp\.com|mag-r\.net|incomes\.jp|e-mailcm\.com|air-studio1956\.jp|av-hdvd\.com|jimdo\.com|att7\.jp|uamapuro\.com|kurokage-keiba\.com|5pjsri1w\.net|0707ameblo\.jp|mega-koukoku\.com|nitoujiku\.info|brandsite986\.com|raku\.in|redirect\.goodfreereport\.com|www\.ert61889vu\.net|hm-f\.jp|fict-scho\.com|ams-sir\.com|navit-j\.com|navit-tokubai\.jp|(?:ca|card)\.[a-z0-9]{19,21}\.asia|123direct\.jp|voyage-ex\.jp|emfrm\.com|fg8bc93g888ma\.click|[a-z]{5,6}\.space|infomarket\.link|top-ex\.jp|extent-ex\.jp|pers110\.jp|pers\.exblog\.jp|design110\.blog58\.fc2\.com|www\.atelier-k-plus\.com|specific-ex\.jp|blanc\.to|blanc01\.(?:net|site)|infosite\.site|dfsfeqwrfasfa\.monster|akbaut\.xyz|perman-llecapita\.[0-9a-f]{19,}\.info\/amazoe-new.php|amamzno-singup\.[0-9a-f]{19,}\.life\/amazno-aws.php|line\.me\/ti\/p\/BfWB53DWNV)\/{0,1}/
+rawbody JPSCAMURI /https{0,1}:\/\/[a-z0-9-.]*(?:europe\.webmatrixhosting\.net|gogoway\.orgdns\.org|spread\.or\.tv|maga\.readymade\.jp|value\.webcordial\.com|pika\.tv|19191969\.com|093ana\.com|cam-cam\.net|candypop\.tv|deaiking\.com|milkymail\.net|purelove888\.com|secretoflove\.net|l1l9\.com|otegaruhp\.com\/cobra\/html\/hirokopr|online-jp\.net|outside-lover\.com|blue-ocean2004\.com|naturalget\.com|scoop-on\.(com|jp)|1092\.cn|1092\.gs|19190930\.com|i1i9\.net|l1l9\.com|yoso-zu\.com|rose-kiss\.com|members\.fortunecity\.com|up7\.cc|eyc\.jp|zl8\.jp|61\.96\.62\.167|pure1151\.com|bblive\.tv|ai-angel\.net|soku-aeru\.net|nightpita\.com|dejavu\.to|tada\.ph|peachat\.net|1919japan\.com|to-roku\.com|ceaw\.jp|59862777\.com|orange-rocket\.com|prin\.to|lolo\.ojiji\.net|ana093\.cc|eroero999\.com|love4deai\.com|kicks-ass\.net|is-a-geek\.org|lovemint\.net|e-hot-news\.jp|getget\.oops\.jp|upper\.jp|xx-mail\.jp|px\.a8\.net|pc\.lovefree\.tv|pure1107\.net|ljart\.net|(0-9a-z)+\.ifdef\.jp|(free24mail|365hdate)\.fc2\.com|odaiba-bbs\.jp|ai51\.e-city\.tv|bokumetu\.com|kissmi\.jp|party-jamjam\.org|hosting-geomax\.jp|sf-spot\.com|big-888\.com|o-oku-channel\.com|soresoreweb\.com|geocities\.jp\/(sayacchimail|poophy15)|websamba\.com|members\.lycos\.co\.uk\/cadlove|[a-z0-9-]+\.(tripod\.com|host\.sk)(\/top|\/main){0,1}|xid-love\.netfirms\.com|club-classico\.com|e-ezweb\.jp|rakuen-dx\.com|lover-kiss\.com|cross\.ne\.jp|j-sine\.com|swht\.jp|doxlive\.com|perfectharmony-ms\.org|1251\.us|servecounterstrike\.com|[a-z_-]*deai[a-z_-]*\.[a-z0-9-]+\.(jp|com|net|tv|sk|cn)|61\.197\.117\.99|redmax\.jp|morachao\.com|1251\.cc|formzu\.net|members\.ocry\.com|cbat\.page\.ne\.jp|889860\.com|89balls\.com|filltheblank\.com|members2\.jcom\.home\.ne\.jp\/3385927201|aru-aru\.jpn\.org|otz5678\.hn\.org|tinyurl\.com|choco2\.jp|buisinespp\.dyndns\.dk|abcwill\.dyn\.dhs\.org|yudoweb1\.freewebsitehosting\.com|umimono.no.sapo.pt|656566\.com|sss-japan\.co\.jp|home\.doramail\.com|www40\.brinkster\.com|shameme\.host\.sk|autocall\.jp|dm-mail\.net|www18\.ocn\.ne\.jp\/\~kio-pack|mo-v\.jp|www\.tactnet\.co\.jp|hiromirror-desighner\.net|fff\.lir\.dk|s-s\.kyed\.com|brandwholesaler\.com|nihon-cash\.com|dogyman\.com|yellowsanta\.jp|bottom-up1\.com|hime\.ontheweb\.nu|free-xx\.com|address-bank\.homeip\.net|agk-777\.jp|shotgunmarriage\.net|(minami|farewell|alstroemeria)\.dynu\.ca|kyousai\.squares\.net|gigamerimp\.net|boorats19\.info|sunnyday\.jp|life-line\.mods\.jp|lucavenus\.jp|e-shops\.jp|fox99\.staticcling\.org|e-net\.velvet\.jp|access\.main\.jp|webclick\.chu\.jp|www\.infotop\.jp|www\.mailbank\.biz|ladymaid\.net|new-homebiz\.com|777navi\.cc|riajet\.com|af-sv\.com|yy-life\.com|1151bbs\.jp|gambletips\.net|oogachi-t\.com|keiba-de-myhome-get\.seesaa\.net|pachipuro-m\.com|sugowaza\.jp|free-book\.jp|ippatu\.com|.\$B%a%k%:.\(B\.jp|data-jobbank\.from\.tv|deairooms\.com|1-coin\.jp|combzmail\.jp|insiderscoachingclub\.com|genkiclub\.net|viviani\.jp|sakakibara\.zz\.tc|miss-me\.findyou2\.net|at-soho\.rdy\.jp|pavbq\.com|kagurazaka\.biz|sc37\.vczln\.com|snsns\.my-sv\.net|e-bukken\.co\.jp|ji06\.gtwd\.biz|ktaisearch\.com|shop\.shenlihang\.info|baojpp\.com|sakuradvd\.com|oshirase-jp\.com|genkiclub1470\.com|shoppingjp\.net|rdnw\.net|i-ktai\.com|rkg\.(?:jp|cc)|megami\.hiho\.jp|infodirect\.bz|aboy\.jp|sakuses2012\.web\.fc2\.com|123direct\.info|freesianet\.co\.jp|sisoras\.info|fx-worldalliance\.com|w-net\.cc|yutori-bank\.com|jpn\.org|f\.msgs\.jp|serendipshop\.com|shop-pro\.jp|oison\.xsrv\.jp|crecomcre\.com|1lejend\.com|paz\.jp|kei\.net|reizeike\.com|megami\.hiho\.jp|auc-life\.org|icon-corp\.sub\.jp|helphealjapan\.com|sanwango\.com|serendip-corp\.com|mag-r\.net|incomes\.jp|e-mailcm\.com|air-studio1956\.jp|av-hdvd\.com|jimdo\.com|att7\.jp|uamapuro\.com|kurokage-keiba\.com|5pjsri1w\.net|0707ameblo\.jp|mega-koukoku\.com|nitoujiku\.info|brandsite986\.com|raku\.in|redirect\.goodfreereport\.com|www\.ert61889vu\.net|hm-f\.jp|fict-scho\.com|ams-sir\.com|navit-j\.com|navit-tokubai\.jp|(?:ca|card)\.[a-z0-9]{19,21}\.asia|123direct\.jp|voyage-ex\.jp|emfrm\.com|fg8bc93g888ma\.click|[a-z]{5,6}\.space|infomarket\.link|top-ex\.jp|extent-ex\.jp|pers110\.jp|pers\.exblog\.jp|design110\.blog58\.fc2\.com|www\.atelier-k-plus\.com|specific-ex\.jp|blanc\.to|blanc01\.(?:net|site)|infosite\.site|dfsfeqwrfasfa\.monster|akbaut\.xyz|perman-llecapita\.[0-9a-f]{19,}\.info\/amazoe-new.php|amamzno-singup\.[0-9a-f]{19,}\.life\/amazno-aws.php|line\.me\/ti\/p\/BfWB53DWNV|myjcb-co\.optud\.top|nttdocomo\.jp\.qsafety\.xyz|sndc-crad-nem-inedx\.c9842\.cn)\/{0,1}/
 describe JPSCAMURI Japanese scam site
 score JPSCAMURI 3.5
 
@@ -3378,7 +3400,9 @@ score URIBLSBL00 -2.0
 meta DYN_URLSBL URIBL_SBL && ___DYNAMICIP
 score DYN_URLSBL 3.5
 # 2010.12.25 by [yoh]
-meta DYN_SBL RCVD_IN_SBL && ___DYNAMICIP
+# modified 2021.07.27 by [yoh]
+#meta DYN_SBL RCVD_IN_SBL && ___DYNAMICIP
+meta DYN_SBL ___DYNAMICIP && (RCVD_IN_SBL || RCVD_IN_SBL_CSS)
 score DYN_SBL 10
 
 
@@ -6130,7 +6154,8 @@ describe GMO_US [US]GMO CLOUD AMERICA INC.
 score GMO_US 1.5
 
 # modified 2021.07.18 by [yoh]
-header DIGITALOCEAN_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:45\.55\.\d{1,3}|139\.59\.(?:\d|1[0-5])|192\.241\.(?:12[89]|1[3-9]\d|2\d\d))\.\d{1,3} /
+# modified 2021.07.26 by [yoh]
+header DIGITALOCEAN_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:45\.55|167\.71)\.\d{1,3}|139\.59\.(?:\d|1[0-5])|192\.241\.(?:12[89]|1[3-9]\d|2\d\d))\.\d{1,3} /
 describe DIGITALOCEAN_US [US]Digital Ocean, Inc.
 score DIGITALOCEAN_US 1.5
 
@@ -8182,26 +8207,26 @@ score DIRECTSONETDYN 1.5
 
 
 replace_tag OCN_WIDE (?:58\.(?:88|9[01245])|60\.(?:3[39]|4[04])|122\.26|123\.2(?:16|20)|124\.8[47]|124\.100|125\.17[2-5]|180\.(?:9|43)|219\.16[0-5]|221\.188|220\.(?:9[678]|10[4-7])|222\.(?:14[457-9]|15[01]))(?:\.\d{1,3}){2}
-replace_tag OCN_60 60\.32\.(?:1[6-9]|2[01]|3[89]|[45]\d|6[0-3])|60\.37\.(?:6[4-9]|[789]\d|\d\d\d)|60\.38\.(?:\d|\d\d|10[0-5]|11[4-9]|1[2-9]\d|2\d\d)|60\.45\.(?:\d|\d\d|1[0-3]\d|14[0-8]|15[5-9]|1[67]\d|18[0-7]|19[2-9]|2\d\d)|60\.46\.(?:\d|\d\d|1[01]\d|12[0-7])|
+replace_tag OCN_60 60\.32\.(?:1[6-9]|2[01]|3[89]|[45]\d|6[0-3])|60\.37\.(?:6[4-9]|[789]\d|\d\d\d)|60\.38\.(?:\d|\d\d|10[0-5]|11[4-9]|1[2-9]\d|2\d\d)|60\.45\.(?:\d|\d\d|1[0-3]\d|14[0-8]|15[5-9]|1[67]\d|18[0-7]|19[2-9]|2\d\d)|60\.46\.(?:\d|\d\d|1[01]\d|12[0-7])
 # modified 2021.07.18 by [yoh]
-replace_tag OCN_61 61\.112\.(?:6[89]|[7-9]\d|[12]\d\d)|61\.118\.(?:\d\d|[12]\d\d)|61\.199\.(?:\d|\d\d|1[01]\d|12[0-7])|61\.207\.(?:5[6-9]|[6-9]\d|1[0-57-9]\d|16[0-8]|20[04-9]|2[1-5]\d)|
-replace_tag OCN_118 118\.15\.(?:1(?:2[89]|[3-8]\d|9[01])|2[45]\d)|
-replace_tag OCN_124 124\.85\.(?:\d|[1-3]\d|4[01]|5[89]|[6-9]\d|[12]\d\d)|124\.86\.(?:\d|\d\d|1\d\d|20\d|21[0-8]|22[789]|2[3-5]\d)|124\.96\.(?:[016-9]|[1-4789]\d|5[0124-7]|6[0-36-9]|10[16-9]|11[0-3789]|(?:1[236-9]|2\d)\d|14[02-9]|15[012])|124\.97\.(?:\d|[1-8]\d|9[0-6]|10[5-9]|(?:1[1-9]|2\d)\d)|124\.98\.(?:\d|1\d|2[04-7]|4[1-9]|[5-9]\d|1[0-57]\d|16[0124-9]|18[0-3]|19[01]|22[4-9]|23[013-9]|24[014-9]|25[0145])|124\.99\.(?:[0-5]|1[0-7]|2[2-689]|5[0-3]|[34]\d|7[2-9]|8[0-8]|9[4-9]|[12]\d\d)|124\.101\.(?:[3-6]|1[1-489]|[23789]\d|4[0-5]|5[12]|6[3-9]|1[04-7]\d|11[0-4]|18[0-6]|20[2-9]|2[1-5]\d)|124\.102\.(?:\d|\d\d|17[016-9]|1[0-689]\d|2\d\d)|124\.103\.(?:\d|[1-8]\d|9[01]|10[2-5]|11[0-389]|1[235-9]\d|14[0-5]|2[0-4]\d)|
-replace_tag OCN_218 218\.43\.118|
-replace_tag OCN_219 219\.114\.(?:\d|[1-57-9]\d)|
-replace_tag OCN_220 220\.99\.(?:\d|[1-5]\d|6[0-3])|220\.111\.(?:4[89]|[5-9]\d|\d\d\d)|
-replace_tag OCN_222 222\.146\.(?:12[89]|1[3-9]\d|2[0-4]\d|25[0-5])
-replace_tag OCN_211 211\.129\.(?:1[2-9]|[2-9]\d|1\d\d|2[0-4]\d|25[0-5])|
-# modified 2021.07.18 by [yoh]
-replace_tag OCN_153 153\.(?:128\.(?:\d|[1-5]\d|6[0-3])|140\.(?:12[89]|1[3-9]\d|2[0-4]\d|25[0-5])|142\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])|149\.(?:12[89]|1[3-9]\d|2\d\d)|153\.(?:\d|\d\d|1[01]\d|12[0-7]))|
-replace_tag OCN_125 125\.175\.(?:12[7-9]|1[3-9]\d|2[0-4]\d|25[0-5])|
+replace_tag OCN_61 61\.112\.(?:6[89]|[7-9]\d|[12]\d\d)|61\.118\.\d{2,3}|61\.199\.(?:\d|\d\d|1[01]\d|12[0-7])|61\.207\.(?:5[6-9]|[6-9]\d|1[0-57-9]\d|16[0-8]|20[04-9]|2[1-5]\d)
+replace_tag OCN_118 118\.15\.(?:1(?:2[89]|[3-8]\d|9[01])|2[45]\d)
+replace_tag OCN_124 124\.85\.(?:\d|[1-3]\d|4[01]|5[89]|[6-9]\d|[12]\d\d)|124\.86\.(?:\d|\d\d|1\d\d|20\d|21[0-8]|22[789]|2[3-5]\d)|124\.96\.(?:[016-9]|[1-4789]\d|5[0124-7]|6[0-36-9]|10[16-9]|11[0-3789]|(?:1[236-9]|2\d)\d|14[02-9]|15[012])|124\.97\.(?:\d|[1-8]\d|9[0-6]|10[5-9]|(?:1[1-9]|2\d)\d)|124\.98\.(?:\d|1\d|2[04-7]|4[1-9]|[5-9]\d|1[0-57]\d|16[0124-9]|18[0-3]|19[01]|22[4-9]|23[013-9]|24[014-9]|25[0145])|124\.99\.(?:[0-5]|1[0-7]|2[2-689]|5[0-3]|[34]\d|7[2-9]|8[0-8]|9[4-9]|[12]\d\d)|124\.101\.(?:[3-6]|1[1-489]|[23789]\d|4[0-5]|5[12]|6[3-9]|1[04-7]\d|11[0-4]|18[0-6]|20[2-9]|2[1-5]\d)|124\.102\.(?:\d|\d\d|17[016-9]|1[0-689]\d|2\d\d)|124\.103\.(?:\d|[1-8]\d|9[01]|10[2-5]|11[0-389]|1[235-9]\d|14[0-5]|2[0-4]\d)
+replace_tag OCN_125 125\.175\.(?:12[7-9]|1[3-9]\d|2[0-4]\d|25[0-5])
+replace_tag OCN_153 153\.(?:128\.(?:\d|[1-5]\d|6[0-3])|140\.(?:12[89]|1[3-9]\d|2[0-4]\d|25[0-5])|142\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])|149\.(?:12[89]|1[3-9]\d|2\d\d)|153\.(?:\d|\d\d|1[01]\d|12[0-7]))
+# modified 2021.07.26 by [yoh]
 # added 2021.07.18 by [yoh]
-replace_tag OCN_210 210\.163\.(?:22[89]|2[34]\d)|
-
+replace_tag OCN_210 210\.163\.(?:22[89]|2[34]\d)
+replace_tag OCN_211 211\.129\.(?:1[2-9]|[2-9]\d|1\d\d|2[0-4]\d|25[0-5])
+replace_tag OCN_218 218\.43\.118
+replace_tag OCN_219 219\.114\.(?:\d|[1-57-9]\d)
+replace_tag OCN_220 220\.99\.(?:\d|[1-5]\d|6[0-3])|220\.111\.(?:4[89]|[5-9]\d|\d\d\d)
+replace_tag OCN_222 222\.146\.(?:12[89]|1[3-9]\d|2[0-4]\d|25[0-5])
 
 # 118\.23\.108\.11|
+# modified 2021.07.26 by [yoh]
 # modified 2021.07.18 by [yoh]
-header DIRECTOCNDYN X-Spam-Relays-Untrusted =~ /^\[ ip=(?:<OCN_WIDE>|(?:<OCN_60><OCN_61><OCN_118><OCN_124><OCN_125><OCN_153><OCN_210><OCN_211><OCN_218><OCN_219><OCN_220><OCN_222>)\.\d{1,3}|60\.32\.(?:90\.1(?:4[4-9]|5[01])|208\.4[0-7]|213\.4[0-7])|60\.37\.51\.(?:7|254)|61\.199\.212\.20[1-6]|114\.160\.(?:19[2-9]|2\d\d)\.\d{1,3}|118\.22\.2\.(?:4[89]|5[0-5])|118\.22\.4[4-7]\.\d{1,3}|122\.29\.(?:12[89]|1[3-9]\d|2\d\d)\.\d{1,3}|125\.170\.(?:\d|\d\d|1[01]\d|12[0-7])\.\d{1,3}|125\.206\.(?:117\.1(?:25|33)|227\.11[2-9])|125\.207\.(?:12[89]|1[3-9]\d|2\d\d)\.\d{1,3}|180\.4\.(?:\d|\d\d|1[01]\d|12[0-7])\.\d{1,3}|210\.161\.67\.147|210\.190\.119\.1(?:4[4-9]|5[01])|210\.226\.108\.16[0-7]|219\.166\.(?:29\.(?:8[89]|9[0-5])|76\.11[2-9])|220\.110\.(?:1\.12[0-7]|34\.3[2-9])|219\.166\.160\.1(?:6[89]|7[0-5])|221\.184\.(?:6[4-7]|8[4-9]|9\d|1[01]\d|12[0-7])\.\d{1,3}|221\.186\.143\.1(?:0[4-9]|1[01])|(?:210\.226\.77|221\.186\.153)\.(?:9[6-9]|10\d|11[01])|221\.186\.251\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])) /
+header DIRECTOCNDYN X-Spam-Relays-Untrusted =~ /^\[ ip=(?:<OCN_WIDE>|(?:<OCN_60>|<OCN_61>|<OCN_118>|<OCN_124>|<OCN_125>|<OCN_153>|<OCN_210>|<OCN_211>|<OCN_218>|<OCN_219>|<OCN_220>|<OCN_222>)\.\d{1,3}|60\.32\.(?:90\.1(?:4[4-9]|5[01])|208\.4[0-7]|213\.4[0-7])|60\.37\.51\.(?:7|254)|61\.199\.212\.20[1-6]|114\.160\.(?:19[2-9]|2\d\d)\.\d{1,3}|118\.22\.2\.(?:4[89]|5[0-5])|118\.22\.4[4-7]\.\d{1,3}|122\.29\.(?:12[89]|1[3-9]\d|2\d\d)\.\d{1,3}|125\.170\.(?:\d|\d\d|1[01]\d|12[0-7])\.\d{1,3}|125\.206\.(?:117\.1(?:25|33)|227\.11[2-9])|125\.207\.(?:12[89]|1[3-9]\d|2\d\d)\.\d{1,3}|180\.4\.(?:\d|\d\d|1[01]\d|12[0-7])\.\d{1,3}|210\.161\.67\.147|210\.190\.119\.1(?:4[4-9]|5[01])|210\.226\.108\.16[0-7]|219\.166\.(?:29\.(?:8[89]|9[0-5])|76\.11[2-9])|220\.110\.(?:1\.12[0-7]|34\.3[2-9])|219\.166\.160\.1(?:6[89]|7[0-5])|221\.184\.(?:6[4-7]|8[4-9]|9\d|1[01]\d|12[0-7])\.\d{1,3}|221\.186\.143\.1(?:0[4-9]|1[01])|(?:210\.226\.77|221\.186\.153)\.(?:9[6-9]|10\d|11[01])|221\.186\.251\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])) /
 describe DIRECTOCNDYN directly received spam from OCN
 score DIRECTOCNDYN 1.5
 
@@ -8339,7 +8364,7 @@ score DIRECTVOICETOWN 3.5
 # header DIRECTSAKURAWEB X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:59\.106\.(?:13\.(?:[6-9]|\d\d|1\d\d|2[01]\d|220|237)|14\.204|18\.67|19\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[4-9]\d|2[012]\d|230)|20\.223|27\.(?:14[1-9]|1[5-9]\d|2[0-3]\d|240)|32\.207|33\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])|100\.20[34]|107\.72|113\.84|162\.(?:19[2-9]|20[0-7])|171\.(?:1[1-9]|[2-9]\d|10\d|110))|61\.211\.234\.41|112\.78\.(?:112\.86|117\.105|119\.224|196\.(?:79|149))|202\.(?:181\.(?:96\.173|97\.71|98\.162|105\.136)|222\.30\.222)|210\.188\.201\.\d{1,3}|210\.188\.205\.(?:199|2(05|12))|210\.188\.235\.(?:\d|\d\d|1[01]\d|12[0-7])|210\.224\.165\.36|219\.94\.(?:1(?:2[89]|62)\.(?:1[1-9]|[2-9]\d|10\d|110|14[1-9]|1[5-9]\d|2[0-3]\d|240)|132\.(?:7|107)|133\.2(?:14|42)|143\.3[2-5]|144\.71|148\.176|155\.184|163\.153|166\.[24]0|167\.17[78]|181\.120|190\.106|192\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[456]\d|170)|200\.33))|\d{2,3}(?:\.\d{1,3}){3} rdns=(?:www2{0,1}\.skynetdm\.com|www933\.sakura\.ne\.jp|sv1\.mhai\.jp|sv\d{1,3}\.xserver\.jp)) /
 
 # modified 2021.07.18 by [yoh]
-header DIRECTSAKURAWEB X-Spam-Relays-Untrusted =~ /^\[ ip=(?:49\.212\.(?:2\.(?:70|170)|10\.221|24\.45|36\.46|47\.26|58\.122|87\.74|91\.109|96\.96|106\.155|109\.4[46]|138\.208|222\.19|235\.19)|59\.106\.(?:13\.(?:[6-9]|\d\d|1\d\d|2[01]\d|220|237)|14\.204|18\.67|19\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[4-9]\d|2[012]\d|230)|20\.223|27\.(?:14[1-9]|1[5-9]\d|2[0-3]\d|240)|32\.207|33\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])|37\.131|100\.20[34]|107\.72|113\.84|140\.219|162\.(?:19[2-9]|20[0-7])|171\.(?:1[1-9]|[2-9]\d|10\d|110))|61\.211\.234\.41|133\.167\.(?:42\.228|69\.9|104\.35)|133\.242\.(?:25\.76|115\.46|134\.(?:235|246)|148\.1(?:02|95)|150\.194|153\.181|160\.20)|112\.78\.(?:112\.86|117\.105|119\.224|125\.142|196\.(?:79|149))|153\.120\.(?:5\.(?:108|236)|6\.58|36\.36|165\.10)|153\.126\.200\.177|153\.127\.(?:53\.83|88\.115|248\.166|249\.(?:28|37))|160\.16\.(?:80\.120|152\.202|209\.60|232\.115|237\.191)|182\.48\.(?:17\.4[45]|36\.26|47\.139)|202\.(?:181\.(?:96\.173|97\.71|98\.162|105\.136)|222\.30\.222)|210\.188\.201\.\d{1,3}|210\.188\.205\.(?:199|2(?:05|12))|210\.188\.235\.(?:\d|\d\d|1[01]\d|12[0-7])|210\.224\.165\.36|219\.94\.(?:1(?:2[89]|62)\.(?:1[1-9]|[2-9]\d|10\d|110|14[1-9]|1[5-9]\d|2[0-3]\d|240)|132\.(?:7|107)|133\.2(?:14|42)|143\.3[2-5]|144\.71|148\.176|155\.1(?:43|84)|163\.153|166\.[24]0|167\.17[78]|181\.120|190\.106|192\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[456]\d|170)|200\.33|224\.18[39]|249\.72)|\d{2,3}(?:\.\d{1,3}){3} rdns=(?:www2{0,1}\.skynetdm\.com|www933\.sakura\.ne\.jp|sv1\.mhai\.jp|sv\d{1,3}\.xserver\.jp)) /
+header DIRECTSAKURAWEB X-Spam-Relays-Untrusted =~ /^\[ ip=(?:49\.212\.(?:2\.(?:70|170)|10\.221|24\.45|36\.46|47\.26|58\.122|87\.74|91\.109|96\.96|106\.155|109\.4[46]|138\.208|222\.19|235\.19)|59\.106\.(?:13\.(?:[6-9]|\d\d|1\d\d|2[01]\d|220|237)|14\.204|18\.67|19\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[4-9]\d|2[012]\d|230)|20\.223|27\.(?:14[1-9]|1[5-9]\d|2[0-3]\d|240)|32\.207|33\.(?:6[4-9]|[789]\d|1[01]\d|12[0-7])|37\.131|100\.20[34]|107\.72|113\.84|140\.219|162\.(?:19[2-9]|20[0-7])|171\.(?:1[1-9]|[2-9]\d|10\d|110))|61\.211\.234\.41|133\.125\.39\.215|133\.167\.(?:42\.228|69\.9|104\.35)|133\.242\.(?:25\.76|115\.46|134\.(?:235|246)|148\.1(?:02|95)|150\.194|153\.181|160\.20)|112\.78\.(?:112\.86|117\.105|119\.224|125\.142|196\.(?:79|149))|153\.120\.(?:5\.(?:108|236)|6\.58|36\.36|165\.10)|153\.126\.200\.177|153\.127\.(?:53\.83|88\.115|248\.166|249\.(?:28|37))|160\.16\.(?:80\.120|152\.202|209\.60|232\.115|237\.191)|182\.48\.(?:17\.4[45]|36\.26|47\.139)|202\.(?:181\.(?:96\.173|97\.71|98\.162|105\.136)|222\.30\.222)|210\.188\.201\.\d{1,3}|210\.188\.205\.(?:199|2(?:05|12))|210\.188\.235\.(?:\d|\d\d|1[01]\d|12[0-7])|210\.224\.165\.36|219\.94\.(?:1(?:2[89]|62)\.(?:1[1-9]|[2-9]\d|10\d|110|14[1-9]|1[5-9]\d|2[0-3]\d|240)|132\.(?:7|107)|133\.2(?:14|42)|143\.3[2-5]|144\.71|148\.176|155\.1(?:43|84)|163\.153|166\.[24]0|167\.17[78]|181\.120|190\.106|192\.(?:1[1-9]|[2-9]\d|10\d|110|13[1-9]|1[456]\d|170)|200\.33|224\.18[39]|249\.72)|\d{2,3}(?:\.\d{1,3}){3} rdns=(?:www2{0,1}\.skynetdm\.com|www933\.sakura\.ne\.jp|sv1\.mhai\.jp|sv\d{1,3}\.xserver\.jp)) /
 describe DIRECTSAKURAWEB directly received spam from SAKURAWEB
 score DIRECTSAKURAWEB 3.5
 
@@ -8349,7 +8374,7 @@ header DIRECTHYPERBOX X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:\d{1,3}\.){3}\d{1
 describe DIRECTHYPERBOX directly received spam from HYPERBOX
 score DIRECTHYPERBOX 1.5
 
-header DIRECTGMOACCESS X-Spam-Relays-Untrusted =~ /^\[ ip=(?:36\.2\.(?:107|249)\.\d{1,3}|36\.3\.1(?:08|1[1-9]|2[3-7])\.\d{1,3}|114\.179\.254\.185|(?:115\.179\.10[01]|122\.103\.201)\.\d{1,3}|121\.119\.179\.189|157\.7\.17[45]\.\d{1,3}|163\.44\.14[89]\.\d{1,3}|210\.146\.174\.\d{1,3}|210\.157\.9\.(?:2[1-9]|3[0-5789]|4[0234])|211\.16\.230\.18|(?:\d{1,3}\.){3}\d{1,3} rdns=(?:\d+\.){4}ap\.gmo-access\.jp) /
+header DIRECTGMOACCESS X-Spam-Relays-Untrusted =~ /^\[ ip=(?:36\.2\.(?:107|249)\.\d{1,3}|36\.3\.1(?:08|1[1-9]|2[3-7])\.\d{1,3}|114\.179\.254\.185|(?:115\.179\.10[01]|122\.103\.201)\.\d{1,3}|121\.119\.179\.189|157\.7\.17[45]\.\d{1,3}|163\.44\.1(?:4[89]|5[45])\.\d{1,3}|210\.146\.174\.\d{1,3}|210\.157\.9\.(?:2[1-9]|3[0-5789]|4[0234])|211\.16\.230\.18|(?:\d{1,3}\.){3}\d{1,3} rdns=(?:\d+\.){4}ap\.gmo-access\.jp) /
 describe DIRECTGMOACCESS directly received spam from GMO Internet
 score DIRECTGMOACCESS 1.5
 
