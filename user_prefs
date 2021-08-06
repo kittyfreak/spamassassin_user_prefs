@@ -33,7 +33,7 @@
 # 
 # Notice for Japanese natives:
 # You should read 
-# http://spamassassin.jp/modules/xhnewbb/viewtopic.php?topic_id=64
+# https://web.archive.org/web/20130119112359/http://spamassassin.jp/modules/xhnewbb/viewtopic.php?topic_id=64
 # before using this file.
 # 
 # _._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._
@@ -2449,7 +2449,6 @@ score JOUHOU 0.1
 meta JOUHOUSHOUZAI JOUHOU && SHOUZAI
 score JOUHOUSHOUZAI 1.5
 
-
 # 
 # added 2021.07.25 by [yoh]
 # 
@@ -2457,7 +2456,14 @@ rawbody MBAMAZON /\xd0\x90mazon/
 describe MBAMAZON UTF-8 multibyte "A"mazon
 score MBAMAZON 1.0
 
-meta DYN_MBAMAZON ___DYNAMICIP && MBAMAZON
+# 
+# added 2021.07.29 by [yoh]
+# 
+header MBAMAZONSUBJ Subject =~ /\xd0\x90mazon/
+describe MBAMAZONSUBJ UTF-8 multibyte "A"mazon
+score MBAMAZONSUBJ 1.0
+
+meta DYN_MBAMAZON ___DYNAMICIP && ( MBAMAZON || MBAMAZONSUBJ )
 score DYN_MBAMAZON 3.5
 
 rawbody CNAMAZON /\xe4\xba\x9a\xe9\xa9\xac\xe9\x80\x8a/
@@ -2473,6 +2479,7 @@ score OKYOUMI 1.0
 
 meta DYN_OKYOUMI ___DYNAMICIP && OKYOUMI
 score DYN_OKYOUMI 3.5
+
 
 
 # 
@@ -2592,7 +2599,7 @@ score JPPORNSCAMFROM 7.0
 # combzmail\.jp|
 # |[a-z0-9]+
 
-rawbody JPSCAMURI /https{0,1}:\/\/[a-z0-9-.]*(?:europe\.webmatrixhosting\.net|gogoway\.orgdns\.org|spread\.or\.tv|maga\.readymade\.jp|value\.webcordial\.com|pika\.tv|19191969\.com|093ana\.com|cam-cam\.net|candypop\.tv|deaiking\.com|milkymail\.net|purelove888\.com|secretoflove\.net|l1l9\.com|otegaruhp\.com\/cobra\/html\/hirokopr|online-jp\.net|outside-lover\.com|blue-ocean2004\.com|naturalget\.com|scoop-on\.(com|jp)|1092\.cn|1092\.gs|19190930\.com|i1i9\.net|l1l9\.com|yoso-zu\.com|rose-kiss\.com|members\.fortunecity\.com|up7\.cc|eyc\.jp|zl8\.jp|61\.96\.62\.167|pure1151\.com|bblive\.tv|ai-angel\.net|soku-aeru\.net|nightpita\.com|dejavu\.to|tada\.ph|peachat\.net|1919japan\.com|to-roku\.com|ceaw\.jp|59862777\.com|orange-rocket\.com|prin\.to|lolo\.ojiji\.net|ana093\.cc|eroero999\.com|love4deai\.com|kicks-ass\.net|is-a-geek\.org|lovemint\.net|e-hot-news\.jp|getget\.oops\.jp|upper\.jp|xx-mail\.jp|px\.a8\.net|pc\.lovefree\.tv|pure1107\.net|ljart\.net|(0-9a-z)+\.ifdef\.jp|(free24mail|365hdate)\.fc2\.com|odaiba-bbs\.jp|ai51\.e-city\.tv|bokumetu\.com|kissmi\.jp|party-jamjam\.org|hosting-geomax\.jp|sf-spot\.com|big-888\.com|o-oku-channel\.com|soresoreweb\.com|geocities\.jp\/(sayacchimail|poophy15)|websamba\.com|members\.lycos\.co\.uk\/cadlove|[a-z0-9-]+\.(tripod\.com|host\.sk)(\/top|\/main){0,1}|xid-love\.netfirms\.com|club-classico\.com|e-ezweb\.jp|rakuen-dx\.com|lover-kiss\.com|cross\.ne\.jp|j-sine\.com|swht\.jp|doxlive\.com|perfectharmony-ms\.org|1251\.us|servecounterstrike\.com|[a-z_-]*deai[a-z_-]*\.[a-z0-9-]+\.(jp|com|net|tv|sk|cn)|61\.197\.117\.99|redmax\.jp|morachao\.com|1251\.cc|formzu\.net|members\.ocry\.com|cbat\.page\.ne\.jp|889860\.com|89balls\.com|filltheblank\.com|members2\.jcom\.home\.ne\.jp\/3385927201|aru-aru\.jpn\.org|otz5678\.hn\.org|tinyurl\.com|choco2\.jp|buisinespp\.dyndns\.dk|abcwill\.dyn\.dhs\.org|yudoweb1\.freewebsitehosting\.com|umimono.no.sapo.pt|656566\.com|sss-japan\.co\.jp|home\.doramail\.com|www40\.brinkster\.com|shameme\.host\.sk|autocall\.jp|dm-mail\.net|www18\.ocn\.ne\.jp\/\~kio-pack|mo-v\.jp|www\.tactnet\.co\.jp|hiromirror-desighner\.net|fff\.lir\.dk|s-s\.kyed\.com|brandwholesaler\.com|nihon-cash\.com|dogyman\.com|yellowsanta\.jp|bottom-up1\.com|hime\.ontheweb\.nu|free-xx\.com|address-bank\.homeip\.net|agk-777\.jp|shotgunmarriage\.net|(minami|farewell|alstroemeria)\.dynu\.ca|kyousai\.squares\.net|gigamerimp\.net|boorats19\.info|sunnyday\.jp|life-line\.mods\.jp|lucavenus\.jp|e-shops\.jp|fox99\.staticcling\.org|e-net\.velvet\.jp|access\.main\.jp|webclick\.chu\.jp|www\.infotop\.jp|www\.mailbank\.biz|ladymaid\.net|new-homebiz\.com|777navi\.cc|riajet\.com|af-sv\.com|yy-life\.com|1151bbs\.jp|gambletips\.net|oogachi-t\.com|keiba-de-myhome-get\.seesaa\.net|pachipuro-m\.com|sugowaza\.jp|free-book\.jp|ippatu\.com|.\$B%a%k%:.\(B\.jp|data-jobbank\.from\.tv|deairooms\.com|1-coin\.jp|combzmail\.jp|insiderscoachingclub\.com|genkiclub\.net|viviani\.jp|sakakibara\.zz\.tc|miss-me\.findyou2\.net|at-soho\.rdy\.jp|pavbq\.com|kagurazaka\.biz|sc37\.vczln\.com|snsns\.my-sv\.net|e-bukken\.co\.jp|ji06\.gtwd\.biz|ktaisearch\.com|shop\.shenlihang\.info|baojpp\.com|sakuradvd\.com|oshirase-jp\.com|genkiclub1470\.com|shoppingjp\.net|rdnw\.net|i-ktai\.com|rkg\.(?:jp|cc)|megami\.hiho\.jp|infodirect\.bz|aboy\.jp|sakuses2012\.web\.fc2\.com|123direct\.info|freesianet\.co\.jp|sisoras\.info|fx-worldalliance\.com|w-net\.cc|yutori-bank\.com|jpn\.org|f\.msgs\.jp|serendipshop\.com|shop-pro\.jp|oison\.xsrv\.jp|crecomcre\.com|1lejend\.com|paz\.jp|kei\.net|reizeike\.com|megami\.hiho\.jp|auc-life\.org|icon-corp\.sub\.jp|helphealjapan\.com|sanwango\.com|serendip-corp\.com|mag-r\.net|incomes\.jp|e-mailcm\.com|air-studio1956\.jp|av-hdvd\.com|jimdo\.com|att7\.jp|uamapuro\.com|kurokage-keiba\.com|5pjsri1w\.net|0707ameblo\.jp|mega-koukoku\.com|nitoujiku\.info|brandsite986\.com|raku\.in|redirect\.goodfreereport\.com|www\.ert61889vu\.net|hm-f\.jp|fict-scho\.com|ams-sir\.com|navit-j\.com|navit-tokubai\.jp|(?:ca|card)\.[a-z0-9]{19,21}\.asia|123direct\.jp|voyage-ex\.jp|emfrm\.com|fg8bc93g888ma\.click|[a-z]{5,6}\.space|infomarket\.link|top-ex\.jp|extent-ex\.jp|pers110\.jp|pers\.exblog\.jp|design110\.blog58\.fc2\.com|www\.atelier-k-plus\.com|specific-ex\.jp|blanc\.to|blanc01\.(?:net|site)|infosite\.site|dfsfeqwrfasfa\.monster|akbaut\.xyz|perman-llecapita\.[0-9a-f]{19,}\.info\/amazoe-new.php|amamzno-singup\.[0-9a-f]{19,}\.life\/amazno-aws.php|line\.me\/ti\/p\/BfWB53DWNV|myjcb-co\.optud\.top|nttdocomo\.jp\.qsafety\.xyz|sndc-crad-nem-inedx\.c9842\.cn)\/{0,1}/
+rawbody JPSCAMURI /https{0,1}:\/\/[a-z0-9-.]*(?:europe\.webmatrixhosting\.net|gogoway\.orgdns\.org|spread\.or\.tv|maga\.readymade\.jp|value\.webcordial\.com|pika\.tv|19191969\.com|093ana\.com|cam-cam\.net|candypop\.tv|deaiking\.com|milkymail\.net|purelove888\.com|secretoflove\.net|l1l9\.com|otegaruhp\.com\/cobra\/html\/hirokopr|online-jp\.net|outside-lover\.com|blue-ocean2004\.com|naturalget\.com|scoop-on\.(com|jp)|1092\.cn|1092\.gs|19190930\.com|i1i9\.net|l1l9\.com|yoso-zu\.com|rose-kiss\.com|members\.fortunecity\.com|up7\.cc|eyc\.jp|zl8\.jp|61\.96\.62\.167|pure1151\.com|bblive\.tv|ai-angel\.net|soku-aeru\.net|nightpita\.com|dejavu\.to|tada\.ph|peachat\.net|1919japan\.com|to-roku\.com|ceaw\.jp|59862777\.com|orange-rocket\.com|prin\.to|lolo\.ojiji\.net|ana093\.cc|eroero999\.com|love4deai\.com|kicks-ass\.net|is-a-geek\.org|lovemint\.net|e-hot-news\.jp|getget\.oops\.jp|upper\.jp|xx-mail\.jp|px\.a8\.net|pc\.lovefree\.tv|pure1107\.net|ljart\.net|(0-9a-z)+\.ifdef\.jp|(free24mail|365hdate)\.fc2\.com|odaiba-bbs\.jp|ai51\.e-city\.tv|bokumetu\.com|kissmi\.jp|party-jamjam\.org|hosting-geomax\.jp|sf-spot\.com|big-888\.com|o-oku-channel\.com|soresoreweb\.com|geocities\.jp\/(sayacchimail|poophy15)|websamba\.com|members\.lycos\.co\.uk\/cadlove|[a-z0-9-]+\.(tripod\.com|host\.sk)(\/top|\/main){0,1}|xid-love\.netfirms\.com|club-classico\.com|e-ezweb\.jp|rakuen-dx\.com|lover-kiss\.com|cross\.ne\.jp|j-sine\.com|swht\.jp|doxlive\.com|perfectharmony-ms\.org|1251\.us|servecounterstrike\.com|[a-z_-]*deai[a-z_-]*\.[a-z0-9-]+\.(jp|com|net|tv|sk|cn)|61\.197\.117\.99|redmax\.jp|morachao\.com|1251\.cc|formzu\.net|members\.ocry\.com|cbat\.page\.ne\.jp|889860\.com|89balls\.com|filltheblank\.com|members2\.jcom\.home\.ne\.jp\/3385927201|aru-aru\.jpn\.org|otz5678\.hn\.org|tinyurl\.com|choco2\.jp|buisinespp\.dyndns\.dk|abcwill\.dyn\.dhs\.org|yudoweb1\.freewebsitehosting\.com|umimono.no.sapo.pt|656566\.com|sss-japan\.co\.jp|home\.doramail\.com|www40\.brinkster\.com|shameme\.host\.sk|autocall\.jp|dm-mail\.net|www18\.ocn\.ne\.jp\/\~kio-pack|mo-v\.jp|www\.tactnet\.co\.jp|hiromirror-desighner\.net|fff\.lir\.dk|s-s\.kyed\.com|brandwholesaler\.com|nihon-cash\.com|dogyman\.com|yellowsanta\.jp|bottom-up1\.com|hime\.ontheweb\.nu|free-xx\.com|address-bank\.homeip\.net|agk-777\.jp|shotgunmarriage\.net|(minami|farewell|alstroemeria)\.dynu\.ca|kyousai\.squares\.net|gigamerimp\.net|boorats19\.info|sunnyday\.jp|life-line\.mods\.jp|lucavenus\.jp|e-shops\.jp|fox99\.staticcling\.org|e-net\.velvet\.jp|access\.main\.jp|webclick\.chu\.jp|www\.infotop\.jp|www\.mailbank\.biz|ladymaid\.net|new-homebiz\.com|777navi\.cc|riajet\.com|af-sv\.com|yy-life\.com|1151bbs\.jp|gambletips\.net|oogachi-t\.com|keiba-de-myhome-get\.seesaa\.net|pachipuro-m\.com|sugowaza\.jp|free-book\.jp|ippatu\.com|.\$B%a%k%:.\(B\.jp|data-jobbank\.from\.tv|deairooms\.com|1-coin\.jp|combzmail\.jp|insiderscoachingclub\.com|genkiclub\.net|viviani\.jp|sakakibara\.zz\.tc|miss-me\.findyou2\.net|at-soho\.rdy\.jp|pavbq\.com|kagurazaka\.biz|sc37\.vczln\.com|snsns\.my-sv\.net|e-bukken\.co\.jp|ji06\.gtwd\.biz|ktaisearch\.com|shop\.shenlihang\.info|baojpp\.com|sakuradvd\.com|oshirase-jp\.com|genkiclub1470\.com|shoppingjp\.net|rdnw\.net|i-ktai\.com|rkg\.(?:jp|cc)|megami\.hiho\.jp|infodirect\.bz|aboy\.jp|sakuses2012\.web\.fc2\.com|123direct\.info|freesianet\.co\.jp|sisoras\.info|fx-worldalliance\.com|w-net\.cc|yutori-bank\.com|jpn\.org|f\.msgs\.jp|serendipshop\.com|shop-pro\.jp|oison\.xsrv\.jp|crecomcre\.com|1lejend\.com|paz\.jp|kei\.net|reizeike\.com|megami\.hiho\.jp|auc-life\.org|icon-corp\.sub\.jp|helphealjapan\.com|sanwango\.com|serendip-corp\.com|mag-r\.net|incomes\.jp|e-mailcm\.com|air-studio1956\.jp|av-hdvd\.com|jimdo\.com|att7\.jp|uamapuro\.com|kurokage-keiba\.com|5pjsri1w\.net|0707ameblo\.jp|mega-koukoku\.com|nitoujiku\.info|brandsite986\.com|raku\.in|redirect\.goodfreereport\.com|www\.ert61889vu\.net|hm-f\.jp|fict-scho\.com|ams-sir\.com|navit-j\.com|navit-tokubai\.jp|(?:ca|card)\.[a-z0-9]{19,21}\.asia|123direct\.jp|voyage-ex\.jp|emfrm\.com|fg8bc93g888ma\.click|[a-z]{5,6}\.space|infomarket\.link|top-ex\.jp|extent-ex\.jp|pers110\.jp|pers\.exblog\.jp|design110\.blog58\.fc2\.com|www\.atelier-k-plus\.com|specific-ex\.jp|blanc\.to|blanc01\.(?:net|site)|infosite\.site|dfsfeqwrfasfa\.monster|akbaut\.xyz|perman-llecapita\.[0-9a-f]{19,}\.info\/amazoe-new.php|amamzno-singup\.[0-9a-f]{19,}\.life\/amazno-aws.php|line\.me\/ti\/p\/BfWB53DWNV|myjcb-co\.optud\.top|nttdocomo\.jp\.qsafety\.xyz|sndc-crad-nem-inedx\.c9842\.cn|user-amazon\.1oopl\.top|myjcbs_co_jp\.mnhfix\.shop|ccjchk\.bar)\/{0,1}/
 describe JPSCAMURI Japanese scam site
 score JPSCAMURI 3.5
 
@@ -5841,7 +5848,7 @@ score VIETEL_VNNIC_VN 1.5
 # 222.252.0.0 -  222.255.255.255
 # 203.210.128.0 - 203.210.255.255
 # header VNPT_VNNIC_VN X-Spam-Relays-Untrusted =~ /ip=(203\.210\.(12[89]|1[3-9]\d|2[0-4]\d|25[0-5])\.\d{1,3}|222\.25[2-5](\.\d{1,3}){2}) [^\[\]]+ident= envfrom= intl=0 /
-header VNPT_VNNIC_VN X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:203\.210\.(?:12[89]|1[3-9]\d|2\d\d)|221\.132\.(?:\d|[1-5]\d|6[0-3]))\.\d{1,3}|(?:(?:14|113)\.1(?:[678]\d|9[01])|14\.2(?:2[4-9]|[345]\d)|123\.(?:1[6-9]|2\d|3[01])|222\.25[2-5])(?:\.\d{1,3}){2}) /
+header VNPT_VNNIC_VN X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:203\.210\.(?:12[89]|1[3-9]\d|2\d\d)|221\.132\.(?:\d|[1-5]\d|6[0-3]))\.\d{1,3}|(?:(?:14|113)\.1(?:[678]\d|9[01])|14\.2(?:2[4-9]|[345]\d)|113\.1(?:[6-8]\d|9[0-6])|123\.(?:1[6-9]|2\d|3[01])|222\.25[2-5])(?:\.\d{1,3}){2}) /
 describe VNPT_VNNIC_VN [VN]Vietnam Posts and Telecommunications Corp (VNPT)
 score VNPT_VNNIC_VN 1.5
 
@@ -6155,7 +6162,7 @@ score GMO_US 1.5
 
 # modified 2021.07.18 by [yoh]
 # modified 2021.07.26 by [yoh]
-header DIGITALOCEAN_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:45\.55|167\.71)\.\d{1,3}|139\.59\.(?:\d|1[0-5])|192\.241\.(?:12[89]|1[3-9]\d|2\d\d))\.\d{1,3} /
+header DIGITALOCEAN_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:(?:45\.55|165\.22|167\.71)\.\d{1,3}|139\.59\.(?:\d|1[0-5])|192\.241\.(?:12[89]|1[3-9]\d|2\d\d))\.\d{1,3} /
 describe DIGITALOCEAN_US [US]Digital Ocean, Inc.
 score DIGITALOCEAN_US 1.5
 
@@ -6221,7 +6228,7 @@ score HOSTWINDS_US 1.5
 #NetRange:       45.40.48.0 - 45.40.63.255
 #NetName:        ZEN-X-001
 #Organization:   Zenlayer Inc (ZENLA-7)
-header ZENLAYER_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:45\.40\.(?:4[89]|5\d|6[0-3])|107\.150\.(?:9[6-9]|1[01]\d|12[0-7])|128\.1\.\d{1,3}|172\.96\.1(?:1[2-9]|2[0-7]))\.\d{1,3} /
+header ZENLAYER_US X-Spam-Relays-Untrusted =~ /^\[ ip=(?:45\.(?:40\.(?:4[89]|5\d|6[0-3])|43\.(?:3[2-9]|[45]\d|6[0-3]))|107\.150\.(?:9[6-9]|1[01]\d|12[0-7])|128\.1\.\d{1,3}|172\.96\.1(?:1[2-9]|2[0-7]))\.\d{1,3} /
 describe ZENLAYER_US [US]21680 Gateway Center Dr. Suite 350 Diamond Bar CA
 score ZENLAYER_US 1.5
 
@@ -6264,8 +6271,9 @@ score VPLSNET_US 1.5
 # added 2021.07.25 by [yoh]
 #NetRange:       51.79.0.0 - 51.79.255.255
 #NetRange:       51.79.246.112 - 51.79.246.127
+#NetRange:       198.245.48.0 - 198.245.63.255
 #OrgName:        OVH Hosting, Inc.
-header OVH_CA X-Spam-Relays-Untrusted =~ /^\[ ip=51\.79\.246\.1(?:1[2-9]|2[0-7]) /
+header OVH_CA X-Spam-Relays-Untrusted =~ /^\[ ip=(?:51\.79\.246\.1(?:1[2-9]|2[0-7])|198\.245\.(?:4[89]|5\d|6[0-3])\.\d{1,3}) /
 describe OVH_CA [CA]OVH Hosting, Inc. 800-1801 McGill College Montreal
 score OVH_CA 1.5
 
@@ -7426,7 +7434,7 @@ describe NEOCOM_KH [KH]Neocomisp Internet Service Provider
 score NEOCOM_KH 1.5
 
 #DTV-STARNET
-header DTVSTAR_KH X-Spam-Relays-Untrusted =~ /^\[ ip=(?:103\.23\.13[2-5]|111\.92\.24[0-3]|114\.134\.1(?:8[4-9]|9[01])|115\.178\.2[4-7])\.\d{1,3} /
+header DTVSTAR_KH X-Spam-Relays-Untrusted =~ /^\[ ip=(?:27\.109\.116|103\.23\.13[2-5]|111\.92\.24[0-3]|114\.134\.1(?:8[4-9]|9[01])|115\.178\.2[4-7])\.\d{1,3} /
 describe DTVSTAR_KH [KH]DTV-STar Co.,Ltd.Phnom Penh, Cambodia
 score DTVSTAR_KH 1.5
 
