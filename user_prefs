@@ -6924,14 +6924,14 @@ score GREATTANG_HK 1.5
 #inetnum:        165.154.0.0 - 165.154.127.255
 #inetnum:        165.154.0.0 - 165.154.127.255
 #netname:        UCLOUD-HK
-header UCLOUD_HK X-Spam-Relays-Untrusted =~ /^\[ ip=(?:123\.58\.(?:19[2-9]|2[01]\d|22[0-3])|152\.32\.(?:12[89]|1[3-9]\d|2\d\d)|165\.154\.(?:\d|\d\d|1[01]\d|12[0-7]))\.\d{1,3}) /
+header UCLOUD_HK X-Spam-Relays-Untrusted =~ /^\[ ip=(?:123\.58\.(?:19[2-9]|2[01]\d|22[0-3])|152\.32\.(?:12[89]|1[3-9]\d|2\d\d)|165\.154\.(?:\d|\d\d|1[01]\d|12[0-7]))\.\d{1,3} /
 describe UCLOUD_HK [HK]FLAT/RM 603 6/F, LAWS COMMERCIAL PLAZA, 788 CHEUNG SHA WAN ROAD, KL,, Hong Kong
 score UCLOUD_HK 1.5
 
 # added 2021.07.21 by [yoh]
 #inetnum:        103.71.228.0 - 103.71.231.255
 #netname:        ADSMARTDIGITALLTD-HK
-header ADSMARTDIGITALLTD_HK X-Spam-Relays-Untrusted =~ /^\[ ip=(?:123\.58\.(?:19[2-9]|2[01]\d|22[0-3])|152\.32\.(?:12[89]|1[3-9]\d|2\d\d)|165\.154\.(?:\d|\d\d|1[01]\d|12[0-7]))\.\d{1,3}) /
+header ADSMARTDIGITALLTD_HK X-Spam-Relays-Untrusted =~ /^\[ ip=(?:123\.58\.(?:19[2-9]|2[01]\d|22[0-3])|152\.32\.(?:12[89]|1[3-9]\d|2\d\d)|165\.154\.(?:\d|\d\d|1[01]\d|12[0-7]))\.\d{1,3} /
 describe ADSMARTDIGITALLTD_HK [HK]5/F, Belgian Bank Bldg, No. 721-725 Nathan Rd Mong Kok,, KLN
 score ADSMARTDIGITALLTD_HK 1.5
 
@@ -7536,7 +7536,7 @@ score GHOSTNET_DE 1.5
 #netname:        LU-GCORELABS-20120809
 #inetnum:        83.229.4.0 - 83.229.4.255
 #netname:        LU-GCORELABS-20040513
-header GCORELABS_LU X-Spam-Relays-Untrusted =~ /^\[ ip=(?:146\.185\.2(?:1[4-9]|2[01])|5\.189\.22[0-3]|83\.229\.4)\.\d{1,3}) /
+header GCORELABS_LU X-Spam-Relays-Untrusted =~ /^\[ ip=(?:146\.185\.2(?:1[4-9]|2[01])|5\.189\.22[0-3]|83\.229\.4)\.\d{1,3} /
 describe GCORELABS_LU [LU]G-Core Labs S.A. 2A Rue Albert Borschette 1246 Luxembourg
 score GCORELABS_LU 1.5
 
