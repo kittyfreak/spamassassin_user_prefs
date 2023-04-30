@@ -7778,6 +7778,28 @@ full CTMXVIRUS /\nContent-[Tt]ype: multipart\/mixed;(?:.+){0,1}\n(?:.+\n|\n){1,}
 full ONLYZIPVIRUS /\nReceived: .+\n(?:.+\n){1,}Content-Type: application\/zip; name=\"[A-Za-z0-9_-]{2,}\.zip\"\n(?:.+\n){1,}\n[\x21-\x7e]{60,}/
 
 
+# added 2023.04.29 by [yoh]
+rawbody __WABCP_HTML /<title>We are Buying Commercial Properties<\/title>/
+
+full __MPALUDH /(?:\r|\n){2}\-{6}=_Part_\d{6}_\d{9}\.\d{13}(?:\r|\n)Content\-Type: multipart\/alternative\; {0,1}(?:\r|\n)\tboundary=\"(\-{4}=_Part_\d{6}_\d{9}.\d{13})\"(?:\r|\n){2,}\-{2}\1(?:\r|\n)Content\-Type: text\/plain\; charset=UTF\-8(?:(?:\r|\n)Content\-Transfer\-Encoding: 7bit){0,1}(?:\r|\n){2,}Update Here(?:\r|\n){1,}\-{2}\1(?:\r|\n)Content\-Type: text\/html\; charset=UTF\-8(?:\r|\n){2,}<!DOCTYPE html PUBLIC /
+
+meta WABCP __WABCP_HTML && __MPALUDH
+score WABCP 5
+meta WABCPHTMLRBL __WABCP_HTML && ( RCVD_IN_SORBS_DUL || RCVD_IN_KOREA || RCVD_IN_VALIDITY_RPBL || RCVD_IN_BL_SPAMCOP_NET || RCVD_IN_SBL || RCVD_IN_SBL_CSS )
+score WABCPHTMLRBL 5
+meta MPALUDHRBL __MPALUDH && ( RCVD_IN_SORBS_DUL || RCVD_IN_KOREA || RCVD_IN_VALIDITY_RPBL || RCVD_IN_BL_SPAMCOP_NET || RCVD_IN_SBL || RCVD_IN_SBL_CSS )
+score MPALUDHRBL 5
+
+header __X_INDEED_FBL exists:X-Indeed-FBL
+header __X_INDEED_CLIENT_APP X-Indeed-Client-App =~ /RailgunnerDaemon/
+header __X_INDEED_CONTENT_TYPE X-Indeed-Content-Type =~ /FOLLOW_COMPANY/
+header __X_INDEED_TK X-Indeed-TK =~ /1gck6b94ihvj0801/
+
+meta WABIND WABCP && __X_INDEED_FBL && __X_INDEED_CLIENT_APP && __X_INDEED_CONTENT_TYPE && __X_INDEED_TK 
+score WABIND 10
+
+
+
 meta FOREIGN_VR (RIPE_NCC || LACNIC || AFRINIC) && ( MAILTOVIRUS || SUBJECTVIRUS || XFWDVIRUS || CTRLTVIRUS || CTMXVIRUS || SUBJECT2VIRUS || SUBJECT3VIRUS || ONLYZIPVIRUS)
 score FOREIGN_VR 10
 
